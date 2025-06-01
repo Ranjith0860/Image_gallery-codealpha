@@ -178,3 +178,14 @@ h1 {
 #scrollUpBtn:hover {
   transform: scale(1.1);
 }
+.ke {
+  text-align: center;             /* Center text horizontally */
+  color: #00ffff;                 /* Light cyan text color */
+  background-color: #1a1a1a;      /* Dark background */
+  padding: 1rem 0;                /* Vertical padding */
+  font-size: 1rem;                /* Text size */
+  font-weight: 500;               /* Medium font weight */
+  letter-spacing: 0.5px;          /* Slight spacing */
+  margin-top: 2rem;               /* Space above footer */
+  border-top: 1px solid #333;     /* Optional top border */
+}
