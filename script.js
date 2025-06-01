@@ -100,3 +100,12 @@ function downloadImage() {
   document.body.removeChild(link);
 }
 
+const scrollBtn = document.getElementById("scrollUpBtn");
+
+window.addEventListener("scroll", () => {
+  scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
