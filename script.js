@@ -91,3 +91,12 @@ function lightboxNavigate(direction) {
 function showLightboxImage(index) {
   lightboxImage.src = filteredImages[index].src;
 }
+function downloadImage() {
+  const link = document.createElement('a');
+  link.href = filteredImages[currentLightboxIndex].src;
+  link.download = 'image.jpg'; // or use dynamic name if needed
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
