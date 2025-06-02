@@ -92,13 +92,47 @@ function showLightboxImage(index) {
   lightboxImage.src = filteredImages[index].src;
 }
 function downloadImage() {
-  const link = document.createElement('a');
-  link.href = filteredImages[currentLightboxIndex].src;
-  link.download = 'image.jpg'; // or use dynamic name if needed
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  const img = filteredImages[currentLightboxIndex];
+  const filter = document.getElementById("filterSelect").value;
+
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  // Create a new Image to load without CORS taint
+  const tempImg = new Image();
+  tempImg.crossOrigin = "anonymous";
+  tempImg.src = img.src;
+
+  tempImg.onload = function () {
+    canvas.width = tempImg.naturalWidth;
+    canvas.height = tempImg.naturalHeight;
+
+    ctx.filter = filter;
+    ctx.drawImage(tempImg, 0, 0);
+
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL("image/jpeg");
+    link.download = 'filtered-image.jpg';
+    link.click();
+  };
 }
+function applyFilter() {
+  const selectedFilter = document.getElementById("filterSelect").value;
+  lightboxImage.style.filter = selectedFilter;
+}
+
+// image filter
+function toggleFilter() {
+  const img = lightboxImage;
+  const hasFilter = img.style.filter && img.style.filter !== "none";
+  img.style.filter = hasFilter ? "none" : "grayscale(100%) contrast(120%) brightness(110%)";
+}
+function applyFilter() {
+  const selectedFilter = document.getElementById("filterSelect").value;
+  lightboxImage.style.filter = selectedFilter;
+}
+
+
 
 const scrollBtn = document.getElementById("scrollUpBtn");
 
@@ -109,3 +143,34 @@ window.addEventListener("scroll", () => {
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+
+const uploadInput = document.getElementById('uploadInput');
+
+uploadInput.addEventListener('change', (event) => {
+  const files = Array.from(event.target.files);
+  files.forEach(file => {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.alt = "user-upload";
+      img.setAttribute("data-category", "all"); // or let user choose category
+      gallery.appendChild(img);
+      allImages.push(img);
+      filteredImages.push(img);
+
+      // Make it clickable for lightbox
+      img.addEventListener("click", () => {
+        const index = filteredImages.indexOf(img);
+        if (index >= 0) openLightbox(index);
+      });
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+  // Reset file input after upload
+  uploadInput.value = '';
+});

@@ -10,6 +10,8 @@
 
   <header>
     <h1>📸 Responsive Image Gallery</h1>
+   
+
 
     <div class="nav-bar">
       <button onclick="navigate(-1)">⬅ Previous</button>
@@ -80,6 +82,16 @@
     <button onclick="lightboxNavigate(-1)">⬅ Back</button>
     <button onclick="lightboxNavigate(1)">Next ➡</button>
     <button onclick="downloadImage()">⬇ Download</button>
+    <select id="filterSelect" onchange="applyFilter()">
+    <option value="none">🎨 No Filter</option>
+    <option value="grayscale(100%)">Grayscale</option>
+    <option value="sepia(100%)">Sepia</option>
+    <option value="invert(100%)">Invert</option>
+    <option value="brightness(130%)">Brighten</option>
+    <option value="contrast(150%)">Contrast</option>
+    <option value="blur(2px)">Blur</option>
+    <option value="hue-rotate(90deg)">Hue Rotate</option>
+  </select>
 
   </div>
 </div>

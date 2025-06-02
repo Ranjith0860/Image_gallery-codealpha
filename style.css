@@ -189,3 +189,67 @@ h1 {
   margin-top: 2rem;               /* Space above footer */
   border-top: 1px solid #333;     /* Optional top border */
 }
+/* filter effect*/
+.lightbox-controls select {
+  padding: 10px 15px;
+  border-radius: 25px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  background: white;
+  color: #333;
+  transition: 0.3s;
+}
+
+.lightbox-controls select:hover {
+  background: #4a00e0;
+  color: white;
+}
+
+.upload-section {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.upload-section input[type="file"] {
+  padding: 6px;
+  border: 2px solid #4a00e0;
+  border-radius: 25px;
+  background: white;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.upload-section input[type="file"]:hover {
+  background: #4a00e0;
+  color: white;
+}
+/* Button base style */
+button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #4a00e0;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(74, 0, 224, 0.4);
+}
+
+/* Hover animation */
+button:hover {
+  background: #7320ff;
+  box-shadow: 0 8px 15px rgba(115, 32, 255, 0.6);
+  transform: translateY(-3px) scale(1.05);
+  transition: all 0.3s ease;
+}
+
+/* Optional: smooth transform reset on mouse out */
+button:focus, button:active {
+  outline: none;
+  transform: translateY(0) scale(1);
+  box-shadow: 0 4px 6px rgba(74, 0, 224, 0.4);
+}
