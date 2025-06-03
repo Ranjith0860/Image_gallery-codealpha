@@ -351,7 +351,7 @@ button:focus, button:active {
   .lightbox-controls {
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
   }
 
   .lightbox-controls button,
@@ -371,6 +371,33 @@ button:focus, button:active {
   }
 
   /* Make dropdown options more readable on mobile */
+  #filterSelect option {
+    font-size: 1rem;
+    padding: 5px;
+  }
+}
+@media (max-width: 600px) {
+  .lightbox-controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .lightbox-controls button,
+  #filterSelect {
+    width: 100%;
+    max-width: 280px;
+    margin: 6px auto;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    box-sizing: border-box;
+  }
+
+  #filterSelect {
+    cursor: pointer;
+  }
+
   #filterSelect option {
     font-size: 1rem;
     padding: 8px;
